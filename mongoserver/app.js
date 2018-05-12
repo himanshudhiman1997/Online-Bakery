@@ -1,10 +1,15 @@
-const express = require('express');
-const app = express();
-app.listen(3000, function() {
-    console.log('listening on 3000')
+const express = require('express')
+const bodyParser= require('body-parser')
+const app = express()
+
+app.use(bodyParser.urlencoded({extended: true}))
+
+// All your handlers here...
+app.post('/quotes', (req, res) => {
+    console.log(req.body)
   })
-  app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html')
-    // Note: __dirname is directory that contains the JavaScript source code. Try logging it and see what you get!
-    // Mine was '/Users/zellwk/Projects/demo-repos/crud-express-mongo' for this app.
-  })
+const MongoClient = require('mongodb').MongoClient
+
+MongoClient.connect('link-to-mongodb', (err, database) => {
+  // ... start the server
+})
